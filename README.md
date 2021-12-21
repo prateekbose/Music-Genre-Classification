@@ -1,4 +1,5 @@
 # Music Genre Classification
+Create a K-nearest neighbours (KNN) based model with Mel Frequency Cepstral Coefficients (MFCC) to accurately classify music samples into different genres based on various factors and also help reclassify broader classes to increase accuracy overall.
 
 ## Architecture
 Starting from gathering audio tracks, we will use a dataset in which audio tracks will all be in WAV format and their time lengths remain same.
