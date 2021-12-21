@@ -15,8 +15,10 @@ The average accuracy of the analysis turns out to be 0.86 (86%) for all the test
 | 25      | 58       | 0.92 (92%) |
 | 100      | 80       | 0.82 (82%) |
 
-| Test Sample Size | Random | Random |
+| Test Sample Size | Random State | Accuracy |
 |--------|--------|--------|
-| 1      | 1      | 1      |
-| 1      | 1      | 1      |
-| 1      | 1      | 1      |
+ 10      | 2       | 1.0 (100%) |
+| 10     | 3       | 0.9 (90%) |
+| 20     | 58      | 0.9 (90%) |
+| 25     | 58      | 0.92 (92%) |
+| 100     | 80     | 0.82 (82%) |
