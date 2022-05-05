@@ -19,9 +19,9 @@ The dataset can be downloaded from: [https://www.kaggle.com/andradaolteanu/gtzan
 
 ## Comparitive Results
 | Parameters/Methods              | Existing Method 1                   | Existing Method 2    | Propose Method       |
-|---------------------------------|-------------------------------------|----------------------|----------------------|
+| ------------------------------- | ----------------------------------- | -------------------- | -------------------- |
 | Dataset                         | 3-Root and 9-Leaf Genre Dataset     | GTZAN Dataset        | GTZAN Dataset        |
 | Train-Test Ratio                | 90% train - 5% validation - 5% test | 90% train - 10% test | 90% train - 10% test |
 | Techniques used                 | MIDI with NCD, KNN                  | MFCC, KNN            | MFCC, KNN            |
 | Number of DistinguishableGenres | 3                                   | 4                    | 10                   |
-| Test Accuracy                   | 85%                                 | 80%                  | 86%                  |
+| Test Accuracy                   | `85%`                               | `80%`                | `86%`                |
