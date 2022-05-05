@@ -14,15 +14,12 @@ for folder in os.listdir(directory):
     if i == 11: 
         break
     for file in os.listdir(directory+"/"+folder):
-        #print(folder+"/"+file)
         (rate, sig) = wav.read(directory+"/"+folder+"/"+file)
-        mfcc_feat = mfcc(sig, rate, winlen=0.02, winstep=0.01, numcep=15,nfft = 1200, appendEnergy=False)
-        # mfcc_feat = mfcc(sig,rate, winlen=0.03, winstep=0.015, numcep=20,nfft = 1200, appendEnergy = False)    
+        mfcc_feat = mfcc(sig, rate, winlen=0.02, winstep=0.01, numcep=15,nfft = 1200, appendEnergy=False)   
         covariance = np.cov(np.matrix.transpose(mfcc_feat))
         mean_matrix = mfcc_feat.mean(0)
         feature = (mean_matrix , covariance , i)
-        #print(feature)
         pickle.dump(feature , f)
-    print("--- done (%d/10)" % i)
+    print("--- done ({}/10)".format(i))
 f.close()
 print("---- feature dump finished ----")

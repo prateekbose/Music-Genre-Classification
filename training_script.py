@@ -40,18 +40,7 @@ def nearestNeighbor(neighbors, result):
         else:
             votes[neighbor] = 1
     sorted_votes = sorted(votes.items(), key=operator.itemgetter(1), reverse=True)
-    #print(result, end=': {')
-    #for neighbor in sorted_votes:
-    #    print(results[neighbor[0]-1], ':', neighbor[1],end=', ')
-    #print("}\n")
     return sorted_votes[0][0]
-
-# def accuracy(test_data, pred):
-#     count = 0
-#     for i in range(len(test_data)):
-#         if(test_data[i] == pred[i]):
-#             count+=1
-#     return count
 
 def loadDataset(filename, size, split):
     dataset = []
@@ -94,17 +83,13 @@ state = [2, 3, 58, 58, 80]
 
 print(" ------ Testing Testing Samples --------")
 for i in range(len(state)):
-    #print("a: %d, b: %d" % (a, b))
-    # random_state = random.randint(a,b)
-    print("test_size: %d, random_state: %d" % (sizes[i]*1000, state[i]))
+    print("test_size: {}, random_state: {}".format(sizes[i]*1000, state[i]))
     train, test = loadDataset(os.getcwd() + "/features.dmp", sizes[i], state[i])
     predictions = []
     test_pred = []
     leng = len(test)
     for x in tqdm(range(leng)):
         neighbor = nearestNeighbor(getNeighbors(train, test[x] , 10), results[test[x][-1]-1])
-        # print("%s: %s" % (results[test[x][-1]-1], results[neighbor-1]))
-        #print(results[test[x][-1]-1], end=': ')
         test_pred.append(results[test[x][-1]-1]) 
         predictions.append(results[neighbor-1]) 
     accuracy_count.append(accuracy_score(test_pred, predictions, normalize=False))
@@ -113,15 +98,9 @@ for i in range(len(state)):
         print(confusion_matrix(test_pred, predictions))
     print(f1_score(test_pred, predictions, average='weighted'))
     print(precision_score(test_pred, predictions, average='weighted', zero_division=1))
-    # if(i >= 0 and accuracy_count[i] > highest_acc):
-    #     highest_acc = accuracy_count[i]
-    #     if(abs(a-random_state) > abs(b-random_state)):
-    #         b = random_state
-    #     else:
-    #         a = random_state
-    print("Pass %d: %0.2f%c accuracy" % (i+1, 100*accuracy_score(test_pred, predictions, normalize=False)/leng, '%'))
+    print("Pass {}: {}% accuracy".format(i+1, 100*accuracy_score(test_pred, predictions, normalize=False)/leng))
 
-print("Average accuracy: %0.2f%c" % (100*sum(accuracy_count)/sum(leng_count), '%'))
+print("Average accuracy: {}%".format(100*sum(accuracy_count)/sum(leng_count)))
 
 print(" ------ Testing Unknown Samples --------")
 
@@ -133,6 +112,6 @@ for i in tqdm(range(len(samples))):
     samples_results, samples_corr = predict_unknown(location, samples[i], samples_results, samples_corr)
 
 for i in range(len(samples)):
-    print("%s: %s" % (samples[i], samples_results[i]))
+    print("{}: {}".format(samples[i], samples_results[i]))
 
-print("Correct predictions count: %d" % samples_corr)
+print("Correct predictions count: {}".format(samples_corr))
